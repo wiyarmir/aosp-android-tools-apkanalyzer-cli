@@ -1,0 +1,13 @@
+diff --git a/sdklib/src/main/java/com/android/sdklib/tool/sdkmanager/InstallAction.java b/sdklib/src/main/java/com/android/sdklib/tool/sdkmanager/InstallAction.java
+index 135593aa56..349cd3f03a 100644
+--- a/sdklib/src/main/java/com/android/sdklib/tool/sdkmanager/InstallAction.java
++++ b/sdklib/src/main/java/com/android/sdklib/tool/sdkmanager/InstallAction.java
+@@ -135,7 +135,7 @@ class InstallAction extends SdkPackagesAction {
+                 l.setAccepted(getRepoManager().getLocalPath(), getSdkHandler().getFileOp());
+             }
+         }
+-        if (!unacceptedLicenses.isEmpty()) {
++        if (false && !unacceptedLicenses.isEmpty()) {
+             List<RemotePackage> acceptedPackages = new ArrayList<>(remotes);
+             Set<RemotePackage> problemPackages = new HashSet<>(unacceptedLicenses.values());
+             getOutputStream()

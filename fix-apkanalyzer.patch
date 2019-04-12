@@ -1,0 +1,30 @@
+diff --git a/apkparser/cli/build.gradle b/apkparser/cli/build.gradle
+index 5829c239e2..1cae68913d 100644
+--- a/apkparser/cli/build.gradle
++++ b/apkparser/cli/build.gradle
+@@ -1,6 +1,12 @@
++plugins {
++  id "com.github.johnrengelman.shadow" version "4.0.2"
++}
+ apply plugin: 'java'
+ apply plugin: 'jacoco-tools-base'
+ apply plugin: 'sdk-java-lib'
++apply plugin: 'application'
++
++mainClassName='com.android.tools.apk.analyzer.ApkAnalyzerCli'
+ 
+ dependencies {
+     compile(libs.jopt)
+diff --git a/apkparser/cli/src/main/java/com/android/tools/apk/analyzer/ApkAnalyzerCli.java b/apkparser/cli/src/main/java/com/android/tools/apk/analyzer/ApkAnalyzerCli.java
+index a956bc7759..2dbcd2c24b 100644
+--- a/apkparser/cli/src/main/java/com/android/tools/apk/analyzer/ApkAnalyzerCli.java
++++ b/apkparser/cli/src/main/java/com/android/tools/apk/analyzer/ApkAnalyzerCli.java
+@@ -425,7 +425,7 @@ public class ApkAnalyzerCli {
+                     PrintStream err,
+                     @NonNull ApkAnalyzerImpl impl,
+                     @NonNull String... args) {
+-                OptionParser parser = super.getParser();
++                OptionParser parser = getParser();
+                 OptionSet opts = parseOrPrintHelp(parser, err, args);
+                 impl.filesList(
+                         opts.valueOf(getFileSpec()).toPath(),
